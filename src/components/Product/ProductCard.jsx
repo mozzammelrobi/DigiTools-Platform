@@ -1,12 +1,24 @@
+
 import { FaCheck } from 'react-icons/fa';
 
+
 const ProductCard = ({ product }) => {
+
+
     return (
         <div className="card bg-base-100 shadow-[0px_0px_10px_rgba(0,0,0,0.15)]">
             <div className="card-body">
                 <div className='flex justify-between'>
                     <span className='text-3xl p-3 rounded-full border border-gray-400'>{product.icon}</span>
-                    <span className="badge badge-xs badge-warning">{product.tag}</span>
+                    <span
+                        className={`badge badge-xs 
+                            ${product.tagType === 'best-seller'
+                                ? ' bg-[#FEF3C6] text-[#BB4D00]'
+                                : product.tagType === 'popular'
+                                    ? 'bg-[#4F39F61A]'
+                                    : 'bg-[#0A883E1A]'
+                            }`}>
+                        {product.tag}</span>
                 </div>
                 <div className="space-y-4">
                     <h2 className="text-3xl font-bold">{product.name}</h2>

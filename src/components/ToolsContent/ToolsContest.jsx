@@ -1,7 +1,12 @@
+import { use, useState } from 'react';
 import ProductCard from '../Product/ProductCard';
+import CartProducts from '../CartProducts/CartProducts';
 
 const ToolsContest = ({ productPromise }) => {
     const products = use(productPromise).data
+
+    const [toggleBtn, setToggleBtn] = useState('allProduct')
+    console.log(toggleBtn)
 
     return (
         <>
@@ -11,22 +16,33 @@ const ToolsContest = ({ productPromise }) => {
                 <div className='flex  justify-center'>
                     <div className='bg-white shadow rounded-full w-fit'>
                         <button
-                            className='btn bg-linear-to-r from-[#4F39F6] to-[#9514FA] text-white rounded-full'>
+                            onClick={() => setToggleBtn('allProduct')}
+                            className={`rounded-full ${toggleBtn === 'allProduct' ? 'btn bg-linear-to-r from-[#4F39F6] to-[#9514FA] text-white' : 'btn  bg-white border-none'} `}>
                             Products
                         </button>
                         <button
-                            className='btn rounded-full bg-white border-none'>
+                            onClick={() => setToggleBtn('cartProduct')}
+                            className={`rounded-full ${toggleBtn === 'cartProduct' ? 'btn bg-linear-to-r from-[#4F39F6] to-[#9514FA] text-white' : 'btn  bg-white border-none'} `}>
                             Cart (0)
                         </button>
                     </div>
                 </div>
             </div>
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+            <div>
                 {
-                    products.map(product => <ProductCard
-                        key={product.id}
-                        product={product}></ProductCard>)
+                    toggleBtn === 'allProduct'
+                        ? <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                            {
+                                products.map(product => <ProductCard
+                                    key={product.id}
+                                    product={product}></ProductCard>)
+                            }
+                        </div>
+
+                        : <div>
+                            <CartProducts></CartProducts>
+                        </div>
                 }
             </div>
 

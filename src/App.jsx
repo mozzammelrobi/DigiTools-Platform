@@ -18,6 +18,7 @@ function App() {
       <Banner />
       <Rating />
       <div className='max-w-300 mx-auto'>
+        
         <ToolsContest productPromise={productPromise} />
 
       </div>
