@@ -2,11 +2,11 @@ import { use, useState } from 'react';
 import ProductCard from '../Product/ProductCard';
 import CartProducts from '../CartProducts/CartProducts';
 
-const ToolsContest = ({ productPromise }) => {
+const ToolsContest = ({ productPromise, cartProducts, setCartProducts, totalPrice, setTotalPrice }) => {
     const products = use(productPromise).data
 
     const [toggleBtn, setToggleBtn] = useState('allProduct')
-    console.log(toggleBtn)
+    // console.log(toggleBtn)
 
     return (
         <>
@@ -23,7 +23,7 @@ const ToolsContest = ({ productPromise }) => {
                         <button
                             onClick={() => setToggleBtn('cartProduct')}
                             className={`rounded-full ${toggleBtn === 'cartProduct' ? 'btn bg-linear-to-r from-[#4F39F6] to-[#9514FA] text-white' : 'btn  bg-white border-none'} `}>
-                            Cart (0)
+                            Cart ({cartProducts.length})
                         </button>
                     </div>
                 </div>
@@ -36,12 +36,21 @@ const ToolsContest = ({ productPromise }) => {
                             {
                                 products.map(product => <ProductCard
                                     key={product.id}
-                                    product={product}></ProductCard>)
+                                    product={product}
+                                    cartProducts={cartProducts}
+                                    setCartProducts={setCartProducts}
+                                    totalPrice={totalPrice}
+                                    setTotalPrice={setTotalPrice}
+                                />)
                             }
                         </div>
 
                         : <div>
-                            <CartProducts></CartProducts>
+                            <CartProducts
+                                cartProducts={cartProducts}
+                                setCartProducts={setCartProducts}
+                                totalPrice={totalPrice}
+                                setTotalPrice={setTotalPrice} />
                         </div>
                 }
             </div>

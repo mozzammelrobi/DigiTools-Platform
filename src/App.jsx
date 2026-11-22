@@ -6,20 +6,27 @@ import Rating from './components/Rating/Rating'
 import ToolsContest from './components/ToolsContent/ToolsContest'
 import axios from 'axios'
 
-
 const productPromise = axios.get('data.json')
 
 function App() {
-
+  const [cartProducts, setCartProducts] = useState([])
+  const [totalPrice, setTotalPrice] = useState(0)
+  // console.log('cart', cartProducts)
 
   return (
     <>
-      <Navbar />
+      <Navbar cartProducts={cartProducts} />
       <Banner />
       <Rating />
       <div className='max-w-300 mx-auto'>
-        
-        <ToolsContest productPromise={productPromise} />
+
+        <ToolsContest
+          productPromise={productPromise}
+          cartProducts={cartProducts}
+          setCartProducts={setCartProducts}
+          totalPrice={totalPrice}
+          setTotalPrice={setTotalPrice}
+        />
 
       </div>
     </>

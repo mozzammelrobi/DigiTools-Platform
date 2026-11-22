@@ -2,7 +2,14 @@
 import { FaCheck } from 'react-icons/fa';
 
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, cartProducts, setCartProducts, totalPrice, setTotalPrice }) => {
+    const handleBuyButton = () => {
+
+        setCartProducts([...cartProducts, product])
+        const priceTotal = product.price + totalPrice;
+        setTotalPrice(priceTotal)
+
+    }
 
 
     return (
@@ -40,7 +47,9 @@ const ProductCard = ({ product }) => {
 
                 </ul>
                 <div className=" mt-auto mt-6">
-                    <button className="btn rounded-full bg-linear-to-r from-[#4F39F6] to-[#9514FA] text-white btn-block">Buy Now</button>
+                    <button
+                        onClick={() => handleBuyButton(product)}
+                        className="btn rounded-full bg-linear-to-r from-[#4F39F6] to-[#9514FA] text-white btn-block">Buy Now</button>
                 </div>
             </div>
         </div>

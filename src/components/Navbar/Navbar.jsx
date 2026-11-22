@@ -29,7 +29,7 @@ const navLinks = [
     },
 ];
 
-const Navbar = () => {
+const Navbar = ({ cartProducts }) => {
     return (
         <div className="navbar bg-base-100 shadow-sm max-w-300 mx-auto">
             <div className="navbar-start">
@@ -55,7 +55,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end space-x-4">
-                <span className='relative'> <span className=' absolute left-2 -top-[10px] text-red-700 text-[10px]'>1</span><FiShoppingCart /></span>
+                <span className='relative'> <span className=' absolute left-2 -top-[10px] text-red-700 text-[12px]'>{cartProducts.length}</span><FiShoppingCart className='text-2xl' /></span>
                 <button>Login</button>
                 <a className="btn rounded-2xl bg-linear-to-r from-[#4F39F6] to-[#9514FA] text-white">Get Started</a>
             </div>
