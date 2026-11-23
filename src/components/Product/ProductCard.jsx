@@ -18,7 +18,7 @@ const ProductCard = ({ product, cartProducts, setCartProducts, totalPrice, setTo
 
 
     return (
-        <div className="card bg-base-100 shadow-[0px_0px_10px_rgba(0,0,0,0.15)]">
+        <div className={`${isDisabled && 'border-t-5 border-green-400'} card bg-base-100 shadow-[0px_0px_10px_rgba(0,0,0,0.15)]`}>
             <div className="card-body">
                 <div className='flex justify-between'>
                     <span className='text-3xl p-3 rounded-full border border-gray-400'>{product.icon}</span>

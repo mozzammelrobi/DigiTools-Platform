@@ -1,7 +1,15 @@
+import { toast } from 'react-toastify';
 import CartCard from '../CartCard/CartCard';
 
 const CartProducts = ({ cartProducts, setCartProducts, totalPrice, setTotalPrice }) => {
-    console.log(cartProducts)
+    // console.log(cartProducts)
+    const handleCheckOut = () => {
+        setCartProducts([])
+        setTotalPrice(0)
+        console.log(cartProducts)
+        
+       toast.success("successfully checkout")
+    }
     return (
         <>
             {
@@ -26,7 +34,9 @@ const CartProducts = ({ cartProducts, setCartProducts, totalPrice, setTotalPrice
                             <span className='font-extrabold text-2xl'>${totalPrice} </span>
 
                         </div>
-                        <button className='btn rounded-2xl bg-linear-to-r from-[#4F39F6] to-[#9514FA] text-white w-full mt-4'>Proceed To checkOut</button>
+                        <button
+                            onClick={() => handleCheckOut()}
+                            className='btn rounded-2xl bg-linear-to-r from-[#4F39F6] to-[#9514FA] text-white w-full mt-4'>Proceed To checkOut</button>
                     </div>
                     : <div className='text-center'>
                         <span className='text-5xl text-center'>No data Availaible</span>
