@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 
 
 const CartCard = ({ product, cartProducts, setCartProducts, totalPrice, setTotalPrice }) => {
@@ -7,7 +8,8 @@ const CartCard = ({ product, cartProducts, setCartProducts, totalPrice, setTotal
         setCartProducts(filterProduct)
         const newPrice = totalPrice - product.price;
         setTotalPrice(newPrice)
-        // console.log(filterProduct)
+        
+        toast.warning("remove from cart")
 
     }
     return (

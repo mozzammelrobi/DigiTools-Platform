@@ -5,6 +5,7 @@ import Banner from './components/Banner/Banner'
 import Rating from './components/Rating/Rating'
 import ToolsContest from './components/ToolsContent/ToolsContest'
 import axios from 'axios'
+import { ToastContainer } from 'react-toastify'
 
 const productPromise = axios.get('data.json')
 
@@ -29,6 +30,7 @@ function App() {
         />
 
       </div>
+      <ToastContainer />
     </>
   )
 }

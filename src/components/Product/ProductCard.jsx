@@ -1,13 +1,18 @@
 
+import { useState } from 'react';
 import { FaCheck } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 
 const ProductCard = ({ product, cartProducts, setCartProducts, totalPrice, setTotalPrice }) => {
+    const [isDisabled, setIsDisabled] = useState(false)
     const handleBuyButton = () => {
 
         setCartProducts([...cartProducts, product])
         const priceTotal = product.price + totalPrice;
         setTotalPrice(priceTotal)
+        setIsDisabled(true)
+        toast.success('successfully add to cart')
 
     }
 
@@ -48,6 +53,7 @@ const ProductCard = ({ product, cartProducts, setCartProducts, totalPrice, setTo
                 </ul>
                 <div className=" mt-auto mt-6">
                     <button
+                        disabled={isDisabled}
                         onClick={() => handleBuyButton(product)}
                         className="btn rounded-full bg-linear-to-r from-[#4F39F6] to-[#9514FA] text-white btn-block">Buy Now</button>
                 </div>
